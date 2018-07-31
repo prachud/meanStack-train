@@ -3,6 +3,7 @@
     margin:auto;
 }  */
 
-mat-form-field.textarea {
+.mat-form-field.mat-form-field,textarea {
  width:100%;
 } 
+
