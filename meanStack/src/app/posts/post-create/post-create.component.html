@@ -2,18 +2,27 @@
 <mat-card>
 
         <form (submit)="onAddPost(postForm)" #postForm="ngForm">
-
                 <mat-form-field>
-                        <input matInput type="text" name="title" ngModel required>
-                </mat-form-field>
-                <hr>    
-                <mat-form-field>
-                        <textarea matInput rows="2" name="content" ngModel required>
-                </textarea>
+                        <input matInput type="text" name="title" ngModel required #title="ngModel">
+                        <mat-error *ngIf="title.invalid">
+                                Please enter title
+                        </mat-error>
+                        <!-- For some reason get control is not working so using #title contriol
+                                 <mat-error *ngIf="postForm.getControl('title').invalid">Please enter a post title
+                        </mat-error> -->
                 </mat-form-field>
                 <hr>
-              <button mat-raised-button color="accent" type="Submit">Save Post</button>
-
+                <mat-form-field>
+                        <textarea matInput rows="2" name="content" ngModel required #content="ngModel">
+                </textarea>
+                <mat-error *ngIf="content.invalid">
+                        Please enter content
+                </mat-error>
+                        <!-- <mat-error *ngIf="postForm.getControl('content').invalid">Please enter a post title
+                        </mat-error> -->
+                </mat-form-field>
+                <hr>
+                <button mat-raised-button color="accent" type="Submit">Save Post</button>
         </form>
 
 </mat-card>
